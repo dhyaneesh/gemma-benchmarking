@@ -1,0 +1,13 @@
+{
+  "output_dir": "results",
+  "cache_dir": "model_cache",
+  "log_level": "INFO",
+  "seed": 42,
+  "models": {
+    "gemma": ["gemma-2b", "gemma-7b"],
+    "mistral": ["mistral-7b"]
+  },
+  "benchmarks": ["mmlu", "gsm8k", "humaneval"],
+  "batch_size": 4,
+  "report_format": ["json", "md"]
+}

@@ -1,0 +1,6 @@
+2025-03-22 09:40:04,051 - gemma_benchmark - INFO - Starting Gemma benchmarking suite
+2025-03-22 09:40:04,051 - gemma_benchmark - INFO - Loaded configuration from configs\default.json
+2025-03-22 09:40:04,052 - gemma_benchmark - INFO - Environment setup complete
+2025-03-22 09:40:04,052 - gemma_benchmark - INFO - Ready to benchmark models: {'gemma': ['gemma-2b', 'gemma-7b'], 'mistral': ['mistral-7b']}
+2025-03-22 09:40:04,052 - gemma_benchmark - INFO - Selected benchmarks: ['mmlu', 'gsm8k', 'humaneval']
+2025-03-22 09:40:04,052 - gemma_benchmark - INFO - Benchmarking complete
