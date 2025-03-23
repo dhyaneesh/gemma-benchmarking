@@ -1,6 +1,6 @@
 ---
 
-# 🔍 Gemma Models Benchmarking Suite
+# 🔍 LLM Benchmarking Suite
 
 A comprehensive benchmarking suite for evaluating Gemma and other language models on various benchmarks including MMLU (Massive Multitask Language Understanding).
 
