@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 import sys
+import logging
 from pathlib import Path
 
 # Add the project root to the Python path
@@ -9,6 +10,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.utils.logging import setup_logger
+from src.benchmarks.runner import BenchmarkRunner
 
 def parse_arguments():
     """Parse command line arguments."""
@@ -62,7 +64,6 @@ def load_config(config_path):
 def main():
     """Main entry point for benchmarking suite."""
     args = parse_arguments()
-    print(args.config)
     
     # Load configuration
     config = load_config(args.config)
@@ -72,10 +73,9 @@ def main():
         config["output_dir"] = args.output_dir
     if args.models:
         # Convert flat list to the structured format in config
-        # This is a simplified version, you might need to adjust based on your needs
-        config["models"] = {"custom": args.models}
+        config["models"] = {"custom": {model: {"name": model} for model in args.models}}
     if args.benchmarks:
-        config["benchmarks"] = args.benchmarks
+        config["benchmarks"] = {benchmark: {} for benchmark in args.benchmarks}
     
     # Set up logging
     log_level = logging.DEBUG if args.verbose else logging.INFO
@@ -86,15 +86,11 @@ def main():
     # Create output directory
     os.makedirs(config["output_dir"], exist_ok=True)
     
-    # This is where you'll eventually implement the benchmarking pipeline
-    logger.info("Environment setup complete")
-    logger.info(f"Ready to benchmark models: {config['models']}")
-    logger.info(f"Selected benchmarks: {config['benchmarks']}")
-    
-    # TODO: Implement the actual benchmarking logic
+    # Initialize and run benchmarks
+    runner = BenchmarkRunner(config)
+    runner.run_benchmarks()
     
     logger.info("Benchmarking complete")
 
 if __name__ == "__main__":
-    import logging
     main()

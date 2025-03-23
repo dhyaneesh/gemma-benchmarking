@@ -3,11 +3,57 @@
   "cache_dir": "model_cache",
   "log_level": "INFO",
   "seed": 42,
-  "models": {
-    "gemma": ["gemma-2b", "gemma-7b"],
-    "mistral": ["mistral-7b"]
+  "huggingface": {
+    "token_path": ".hf_token",
+    "use_auth": true
   },
-  "benchmarks": ["mmlu", "gsm8k", "humaneval"],
-  "batch_size": 4,
+  "models": {
+    "gemma": {
+      "gemma-2b": {
+        "type": "gemma",
+        "name": "gemma-2b",
+        "torch_dtype": "float16",
+        "low_memory": false,
+        "requires_auth": true
+      },
+      "gemma-7b": {
+        "type": "gemma",
+        "name": "gemma-7b",
+        "torch_dtype": "float16",
+        "low_memory": true,
+        "requires_auth": true
+      }
+    },
+    "mistral": {
+      "mistral-7b": {
+        "type": "mistral",
+        "name": "mistral-7b",
+        "torch_dtype": "float16",
+        "low_memory": true,
+        "requires_auth": false
+      }
+    }
+  },
+  "inference": {
+    "batch_size": 4,
+    "max_new_tokens": 256,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "top_k": 50
+  },
+  "benchmarks": {
+    "mmlu": {
+      "subjects": ["all"],
+      "num_shots": 5
+    },
+    "gsm8k": {
+      "num_shots": 3,
+      "split": "test"
+    },
+    "humaneval": {
+      "temperature": 0.1,
+      "num_samples": 1
+    }
+  },
   "report_format": ["json", "md"]
 }

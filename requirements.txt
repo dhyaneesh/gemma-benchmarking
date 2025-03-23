@@ -1,24 +1,40 @@
 # Core dependencies
 torch>=2.0.0
-transformers>=4.30.0
-datasets>=2.12.0
-evaluate>=0.4.0
-accelerate>=0.20.0
+transformers>=4.36.0
+datasets>=2.14.0
+huggingface-hub>=0.19.0
+accelerate>=0.25.0
 
-# Data handling and processing
+# Data processing and utilities
 numpy>=1.24.0
 pandas>=2.0.0
-scikit-learn>=1.2.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+tqdm>=4.66.0
 
 # Visualization
 matplotlib>=3.7.0
-seaborn>=0.12.0
+seaborn>=0.13.0
+plotly>=5.18.0
 
-# Utilities
-tqdm>=4.65.0
-colorama>=0.4.6
+# Evaluation metrics
+evaluate>=0.4.0
+rouge-score>=0.1.2
+
+# Logging and configuration
 pyyaml>=6.0
+jsonschema>=4.19.0
+rich>=13.6.0
+colorama>=0.4.6
 
-# For development
-pytest>=7.3.0
-black>=23.3.0
+# Optional: for HumanEval benchmark
+pytest>=7.4.0
+typing-extensions>=4.7.0
+
+# Optional: for interactive development
+ipython>=8.15.0
+jupyter>=1.0.0
+
+# Project management
+setuptools>=68.0.0
+wheel>=0.41.0

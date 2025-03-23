@@ -1,26 +1,31 @@
 name: gemma-benchmark
 channels:
   - pytorch
-  - nvidia
-  - conda-forge
-  - defaults
 dependencies:
-  - python=3.9
+  - python>=3.9,<3.11
   - pip>=23.0.0
-  - pytorch>=2.0.0
-  - torchvision
-  - numpy>=1.24.0
-  - pandas>=2.0.0
-  - matplotlib>=3.7.0
+  - numpy>=1.22.0
+  - pandas>=1.4.0
+  - matplotlib>=3.5.0
   - seaborn>=0.12.0
-  - scikit-learn>=1.2.0
-  - tqdm>=4.65.0
-  - colorama>=0.4.6
+  - pytorch>=2.0.0
+  - pytorch-cuda=11.8
+  - ipython>=8.0.0
+  - jupyter>=1.0.0
+  - tqdm>=4.64.0
   - pyyaml>=6.0
-  - pytest>=7.3.0
-  - black>=23.3.0
   - pip:
-    - transformers>=4.30.0
-    - datasets>=2.12.0
-    - evaluate>=0.4.0
-    - accelerate>=0.20.0
+      - scipy>=1.9.0
+      - scikit-learn>=1.0.0
+      - transformers>=4.36.0
+      - datasets>=2.14.0
+      - huggingface-hub>=0.19.0
+      - accelerate>=0.25.0
+      - evaluate>=0.4.0
+      - rouge-score>=0.1.2
+      - plotly>=5.18.0
+      - jsonschema>=4.19.0
+      - rich>=13.6.0
+      - colorama>=0.4.6
+      - pytest>=7.4.0
+      - typing-extensions>=4.7.0
