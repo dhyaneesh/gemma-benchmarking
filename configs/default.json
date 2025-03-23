@@ -11,14 +11,14 @@
     "gemma": {
       "gemma-2b": {
         "type": "gemma",
-        "name": "gemma-2b",
+        "name": "google/gemma-2b",
         "torch_dtype": "float16",
         "low_memory": false,
         "requires_auth": true
       },
       "gemma-7b": {
         "type": "gemma",
-        "name": "gemma-7b",
+        "name": "google/gemma-7b",
         "torch_dtype": "float16",
         "low_memory": true,
         "requires_auth": true
@@ -27,7 +27,7 @@
     "mistral": {
       "mistral-7b": {
         "type": "mistral",
-        "name": "mistral-7b",
+        "name": "mistralai/Mistral-7B-v0.1",
         "torch_dtype": "float16",
         "low_memory": true,
         "requires_auth": false

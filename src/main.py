@@ -50,7 +50,13 @@ def load_config(config_path):
     try:
         config_path = Path(config_path)  # Convert string path to Path object
         with open(config_path, "r", encoding="utf-8") as f:
-            return json.load(f)
+            config = json.load(f)
+            
+        # Remove huggingface token configuration if it exists
+        if "huggingface" in config:
+            del config["huggingface"]
+            
+        return config
     except FileNotFoundError:
         print(f"Configuration file not found: {config_path}")
         sys.exit(1)

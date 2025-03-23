@@ -2,18 +2,18 @@
 
 # 🔍 Gemma Models Benchmarking Suite
 
-A comprehensive and extensible benchmarking suite for evaluating **Gemma language models** on academic benchmarks and custom datasets.
+A comprehensive benchmarking suite for evaluating Gemma and other language models on various benchmarks including MMLU (Massive Multitask Language Understanding).
 
 ---
 
 ## 🚀 Features
 
-- ✅ Support for multiple **Gemma model variants**
-- 📊 Integration with **academic benchmarks** (MMLU, GSM8K, and more)
-- 📁 **Custom dataset** evaluation support
-- ⚖️ Comparative analysis with other **open-source models**
-- 📈 Automated **report generation and visualization**
-- 🔌 **Modular and extensible** design for easy integration of new benchmarks or models
+- ✅ Support for Gemma models (2B and 7B)
+- 🔍 Support for Mistral models
+- 📊 MMLU benchmark implementation
+- 🔌 Configurable model parameters
+- 🔒 Secure HuggingFace authentication
+- 📈 Detailed results reporting
 
 ---
 
@@ -23,10 +23,9 @@ A comprehensive and extensible benchmarking suite for evaluating **Gemma languag
 
 Ensure you have the following installed:
 
-- Python **3.10+**
-- Git
-- Windows OS (for now)
-- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/download/) – **recommended for managing environments**
+- Python **3.8+**
+- CUDA-capable GPU (recommended)
+- HuggingFace account with access to Gemma models
 
 ---
 
@@ -35,11 +34,11 @@ Ensure you have the following installed:
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/dhyaneesh/gemma-benchmarking.git
+git clone https://github.com/yourusername/gemma-benchmarking.git
 cd gemma-benchmarking
 ```
 
-2. **Set up the environment**
+2. **Create and activate a virtual environment**
 
 <details>
 <summary><strong>Option 1: Using Conda (Recommended)</strong></summary>
@@ -55,10 +54,27 @@ conda activate gemma-benchmark
 
 ```bash
 python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 </details>
+
+3. **Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔒 Authentication
+
+For models that require authentication (like Gemma), you need to log in to HuggingFace:
+
+```bash
+huggingface-cli login
+```
+
+This will prompt you to enter your HuggingFace token. You can get your token from [HuggingFace Settings](https://huggingface.co/settings/tokens).
 
 ---
 
@@ -82,13 +98,25 @@ python src/main.py
 Run with a **custom config**:
 
 ```bash
-python src/main.py --config configs/custom_config.json
+python src/main.py --config path/to/config.json
 ```
 
 Specify models and benchmarks via CLI:
 
 ```bash
-python src/main.py --models gemma-2b gemma-7b --benchmarks mmlu gsm8k
+python src/main.py --models gemma-2b mistral-7b
+```
+
+Run specific benchmarks:
+
+```bash
+python src/main.py --benchmarks mmlu
+```
+
+Enable verbose output:
+
+```bash
+python src/main.py --verbose
 ```
 
 ---
@@ -133,6 +161,14 @@ This project is licensed under the [MIT License](LICENSE).
 
 ### 🙌 Contributing
 
-Pull requests, issues, and suggestions are welcome! Please open an issue or start a discussion if you’d like to contribute.
+Pull requests, issues, and suggestions are welcome! Please open an issue or start a discussion if you'd like to contribute.
+
+---
+
+## 📄 Acknowledgments
+
+- Google for the Gemma models
+- Mistral AI for the Mistral models
+- HuggingFace for the transformers library and model hosting
 
 ---

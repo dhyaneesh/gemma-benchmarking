@@ -20,7 +20,6 @@ class BenchmarkRunner:
         benchmark = MMLUBenchmark(
             model_name=model_config["name"],
             model_type=model_config["type"],
-            token_path=self.config["huggingface"]["token_path"],
             torch_dtype=model_config["torch_dtype"],
             low_memory=model_config.get("low_memory", False),
             requires_auth=model_config.get("requires_auth", True)

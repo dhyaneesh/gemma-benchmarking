@@ -7,13 +7,13 @@ from datasets import load_dataset
 from tqdm import tqdm
 import numpy as np
 from pathlib import Path
+from huggingface_hub import HfFolder
 
 class MMLUBenchmark:
     def __init__(
         self,
         model_name: str,
         model_type: str,
-        token_path: str,
         torch_dtype: str = "float16",
         low_memory: bool = False,
         requires_auth: bool = True
@@ -24,11 +24,12 @@ class MMLUBenchmark:
         self.low_memory = low_memory
         self.requires_auth = requires_auth
         
-        # Load HuggingFace token
-        if requires_auth:
-            with open(token_path, "r") as f:
-                self.hf_token = f.read().strip()
-            os.environ["HUGGING_FACE_HUB_TOKEN"] = self.hf_token
+        # Check if user is logged in to HuggingFace
+        if requires_auth and not HfFolder.get_token():
+            raise RuntimeError(
+                "Authentication required but no HuggingFace token found. "
+                "Please run 'huggingface-cli login' first."
+            )
         
         # Initialize model and tokenizer
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
