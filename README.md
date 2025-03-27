@@ -26,7 +26,7 @@ A comprehensive benchmarking suite for evaluating Gemma and other language model
 
 Ensure you have the following installed:
 
-- Python **3.8+**
+- Python **3.10+**
 - CUDA-capable GPU (recommended)
 - HuggingFace account with access to Gemma models
 
@@ -72,6 +72,44 @@ conda activate gemma-benchmark
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
+</details>
+
+<details>
+<summary><strong>Option 3: Using Docker</strong></summary>
+
+### Prerequisites
+- Docker installed on your system
+- NVIDIA Container Toolkit (for GPU support)
+
+### Running with Docker
+
+1. **CPU Version**
+```bash
+docker-compose up --build
+```
+
+2. **GPU Version**
+```bash
+TARGET=gpu docker-compose up --build
+```
+
+3. **Running Jupyter Notebooks**
+```bash
+COMMAND="jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root" docker-compose up --build
+```
+
+4. **Running Specific Scripts**
+```bash
+COMMAND="python scripts/run_benchmark.py" docker-compose up --build
+```
+
+The Docker setup includes:
+- Multi-stage builds for CPU and GPU support
+- Persistent volume for HuggingFace cache
+- Jupyter notebook support
+- Security best practices (non-root user)
+- Automatic GPU detection and support
+
 </details>
 
 4. **Install dependencies**

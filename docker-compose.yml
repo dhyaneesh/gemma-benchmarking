@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  gemma-benchmark:
+    build:
+      context: .
+      target: ${TARGET:-base}  # Use 'gpu' for GPU support
+    volumes:
+      - .:/app
+      - ~/.cache/huggingface:/home/appuser/.cache/huggingface
+    environment:
+      - HF_HOME=/home/appuser/.cache/huggingface
+    ports:
+      - "8888:8888"  # For Jupyter notebooks
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: ${COMMAND:-python scripts/setup_wizard.py} 
