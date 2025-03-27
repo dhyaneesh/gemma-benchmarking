@@ -16,6 +16,7 @@ A comprehensive benchmarking suite for evaluating Gemma and other language model
 - 🔒 Secure HuggingFace authentication
 - 📈 Detailed results reporting and visualization
 - 📊 Interactive plots and summary reports
+- 🧙‍♂️ Interactive setup wizard
 
 ---
 
@@ -40,7 +41,20 @@ git clone https://github.com/yourusername/gemma-benchmarking.git
 cd gemma-benchmarking
 ```
 
-2. **Create and activate a virtual environment**
+2. **Run the setup wizard (Recommended)**
+
+```bash
+python scripts/setup_wizard.py
+```
+
+The wizard will:
+- Check prerequisites
+- Set up the Python environment (conda or venv)
+- Configure models and benchmarks
+- Generate a custom configuration file
+- Guide you through the next steps
+
+3. **Manual Installation (Alternative)**
 
 <details>
 <summary><strong>Option 1: Using Conda (Recommended)</strong></summary>
@@ -60,7 +74,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 </details>
 
-3. **Install dependencies**
+4. **Install dependencies**
 
 ```bash
 pip install -r requirements.txt
@@ -85,7 +99,8 @@ This will prompt you to enter your HuggingFace token. You can get your token fro
 All benchmarking settings are controlled via JSON configuration files in the `configs/` directory.
 
 - The **default configuration** is available at: `configs/default.json`
-- You can create custom configs to tailor model selection, datasets, and evaluation settings.
+- You can create custom configs to tailor model selection, datasets, and evaluation settings
+- The setup wizard will help you create a custom configuration file
 
 ---
 
@@ -150,6 +165,7 @@ gemma-benchmarking/
 ├── results/              # Benchmark output results
 ├── reports/              # Visualization reports and plots
 ├── scripts/              # Utility scripts
+│   ├── setup_wizard.py   # Interactive setup wizard
 │   ├── generate_report.py  # Report generation script
 │   └── prepare_data.py     # Dataset preparation scripts
 ├── src/                  # Source code
@@ -184,13 +200,13 @@ gemma-benchmarking/
 
 ## 📌 Roadmap
 
+- [x] Add CLI wizard for quick setup
 - [ ] Add support for additional Gemma model variants
 - [ ] Expand academic benchmark integration
 - [ ] Add HumanEval benchmark implementation
 - [ ] Improve visualization and report automation
 - [ ] Add leaderboard comparison with open models (e.g., LLaMA, Mistral)
 - [ ] Docker support and multiplatform compatibility
-- [ ] Add CLI wizard for quick setup
 
 ---
 
